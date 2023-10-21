@@ -35,6 +35,7 @@ func handleGetBarcode(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("cache-control", "private")
 	barcode := r.Header.Get("barcode")
 	uuid := r.Header.Get("uuid")
+	fmt.Println(uuid, len(uuid))
 	if !isValidUuid(uuid) {
 		sendBadRequest(w)
 		return
