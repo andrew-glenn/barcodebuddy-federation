@@ -41,6 +41,7 @@ func handleGetBarcode(w http.ResponseWriter, r *http.Request) {
 	}
 	requests := redis.LogNewRequest(r, uuid, false)
 	if requests > configuration.Get().ApiDailyCalls {
+		log.Println(requests, configuration.Get().ApiDailyCalls)
 		sendTooManyRequests(w)
 		return
 	}
@@ -73,6 +74,8 @@ func handleVote(w http.ResponseWriter, r *http.Request) {
 	}
 	requests := redis.LogNewRequest(r, uuid, false)
 	if requests > configuration.Get().ApiDailyCalls {
+		log.Println(requests, configuration.Get().ApiDailyCalls)
+
 		sendTooManyRequests(w)
 		return
 	}
@@ -94,6 +97,8 @@ func handleAdd(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if requests > configuration.Get().ApiDailyCallsUpload {
+		log.Println(requests, configuration.Get().ApiDailyCalls)
+
 		sendTooManyRequests(w)
 		return
 	}
@@ -127,6 +132,8 @@ func handleReport(w http.ResponseWriter, r *http.Request) {
 	}
 	requests := redis.LogNewRequest(r, uuid, false)
 	if requests > configuration.Get().ApiDailyCalls {
+		log.Println(requests, configuration.Get().ApiDailyCalls)
+
 		sendTooManyRequests(w)
 		return
 	}
