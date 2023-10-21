@@ -13,6 +13,7 @@ import (
 )
 
 // templateFolderEmbedded is the embedded version of the "templates" folder
+//
 //go:embed templates
 var templateFolderEmbedded embed.FS
 
@@ -105,7 +106,7 @@ func sendBadRequest(w http.ResponseWriter) {
 		ErrorMessage: "Bad request",
 	}
 	response, _ := json.Marshal(result)
-	http.Error(w, string(response), http.StatusTooManyRequests)
+	http.Error(w, string(response), http.StatusUnprocessableEntity)
 }
 
 // Sends a redirect HTTP output to the client. Variable url is used to redirect to ./url
