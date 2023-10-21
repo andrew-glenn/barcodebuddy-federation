@@ -46,7 +46,7 @@ func handleGetBarcode(w http.ResponseWriter, r *http.Request) {
 		sendTooManyRequests(w)
 		return
 	}
-	if len(barcode) > 4 {
+	if len(barcode) >= 4 {
 		storedNames := redis.GetBarcode(barcode, true)
 		if len(storedNames) > 0 {
 			response := ResponseBarcodeFound{
